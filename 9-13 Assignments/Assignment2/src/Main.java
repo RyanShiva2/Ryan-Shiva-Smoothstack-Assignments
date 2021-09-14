@@ -22,5 +22,5 @@ public class Main {
 				System.out.println("Sorry, the correct answer was " + answer + ".");
 			}
 		}
-    }
+	}
 }
