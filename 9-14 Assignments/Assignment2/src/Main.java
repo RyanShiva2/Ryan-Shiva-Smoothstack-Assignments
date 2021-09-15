@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
     /*  Assignment 2
         Construct a 2D array and find the max number and show its position in the array.*/
