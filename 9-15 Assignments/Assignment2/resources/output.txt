@@ -1,0 +1,4 @@
+This is the output.txt file.
+
+This file already contains text.
+
