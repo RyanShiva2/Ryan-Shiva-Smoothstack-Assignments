@@ -1,0 +1,9 @@
+2. Given a random date, how would you find the date of the previous Thursday?
+
+	Answer:
+		- Create a LocalDate object with the random date.
+		- Get the day of week using the getDayOfWeek() method.
+		- Get the enumerated value of the day of the week using the getValue() method.
+		- Get the date of the previous Thursday by subtracting the correct number of days with the minusDays() method. The number of days to subtract is 7 if getDayOfWeek() returns THURSDAY.
+		Otherwise, the correct number of days to subract is (dayOfWeekEnumValue + 3 % 7).
+		

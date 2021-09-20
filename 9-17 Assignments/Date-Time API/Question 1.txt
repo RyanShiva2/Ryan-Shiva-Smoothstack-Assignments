@@ -1,0 +1,5 @@
+1. Which class would you use to store your birthday in years, months, days, seconds, and nanoseconds?
+
+	Answer: LocalDateTime
+	
+	Example: LocalDateTime birthday = LocalDateTime.of(1998, Month.JANUARY, 1, 10, 42, 11, 987147583);

@@ -1,0 +1,4 @@
+3. What is the difference between a ZoneId and a ZoneOffset?
+
+	Answer: ZoneOffset is the difference in time between a given time zone and UTC.
+		ZoneId represents a time-zone ID for a geographical region. The ID references the rules defined by ZoneRules for determining the zone offset from UTC time for a particular zone.
