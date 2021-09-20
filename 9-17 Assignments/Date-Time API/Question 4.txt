@@ -1,3 +1,8 @@
 4. How would you convert an Instant to a ZonedDateTime? How would you convert a ZonedDateTime to an Instant?
 	
 	Answer: 
+		Convert an Instant to a ZonedDateTime:
+			Pass the Instant object and ZoneId to the ofInstant() method.
+		
+		Convert a ZonedDateTime to an Instant:
+			Convert the ZonedDateTime to an Instant using the toInstant() method.
