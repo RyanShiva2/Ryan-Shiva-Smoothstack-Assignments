@@ -19,8 +19,8 @@ class MainTest {
 
     @Test
     void groupSumClumpTest() {
-        assertTrue(Main.groupSumClump(list1, 10, 0));
-        assertTrue(Main.groupSumClump(list2, 14, 0));
-        assertFalse(Main.groupSumClump(list3, 14, 0));
+        assertTrue(Main.groupSumClump(list1, 10));
+        assertTrue(Main.groupSumClump(list2, 14));
+        assertFalse(Main.groupSumClump(list3, 14));
     }
 }

@@ -18,7 +18,7 @@ public class Main {
         ArrayList<Integer> numList = combineDuplicates(numArray);
 
         // Is it possible to choose a group of ints that sum to the target given the constraints
-        System.out.println(groupSumClump(numList, target, 0));
+        System.out.println(groupSumClump(numList, target));
 
     }
 
@@ -38,7 +38,49 @@ public class Main {
         return numList;
     }
 
-    public static boolean groupSumClump(ArrayList<Integer> numList, int target, int counter) {
+    public static boolean groupSumClump(ArrayList<Integer> numList, int target) {
+        for (int i = 0; i < numList.size(); ++i) {
+            if (numList.get(i) == target) {
+                return true;
+            }
+
+            if (target < numList.get(i)) {
+                continue;
+            }
+
+            ArrayList<Integer> copyList = new ArrayList<>(numList);
+            target -= numList.get(i);
+            copyList.remove(i);
+            return groupSumClump(copyList, target);
+        }
+
+        return false;
+
+        /*ArrayList<Integer> copyList = new ArrayList<>(numList);
+
+        if (target - copyList.get(counter) == 0) {
+            return true;
+        } else if (target - copyList.get(counter) > 0) {
+            target -= copyList.get(counter);
+            copyList.remove(copyList.get(counter));
+            return groupSumClump(copyList, target, counter);
+        } else if (target - copyList.get(counter) < 0) {
+            copyList.remove(copyList.get(counter));
+            return groupSumClump(copyList, target, counter);
+        }
+
+        copyList.remove(copyList.get(counter));
+        return groupSumClump(copyList, target, counter);*/
+
+
+
+
+
+
+
+
+
+        /*
         ArrayList<Integer> copyList = new ArrayList<>(numList);
 
         if (target == 0) {
@@ -52,7 +94,7 @@ public class Main {
         ++counter;
 
         return groupSumClump(copyList, target, counter)
-                || groupSumClump(copyList, target - numList.get(counter - 1), counter + 1);
+                || groupSumClump(copyList, target - numList.get(counter - 1), counter + 1);*/
 
 /*        ArrayList<Integer> copyList = new ArrayList<>(numList);
 
@@ -72,10 +114,3 @@ public class Main {
         return false;*/
     }
 }
-// 12, 8, 1
-// 11
-// false
-// should be true
-
-//1, 2, 12, 8, 1
-//14
