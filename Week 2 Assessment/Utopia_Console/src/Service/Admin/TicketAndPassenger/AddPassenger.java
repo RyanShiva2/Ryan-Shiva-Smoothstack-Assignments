@@ -1,4 +1,4 @@
-package Service.Admin.Traveler;
+package Service.Admin.TicketAndPassenger;
 
 import DAO.PassengerDAO;
 import POJO.Passenger;
@@ -10,9 +10,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class UpdatePassenger {
+public class AddPassenger {
 
-    public void updatePassenger() throws SQLException, ClassNotFoundException {
+    public void addPassenger() throws SQLException, ClassNotFoundException {
         ConnectionUtil connUtil = new ConnectionUtil();
         Connection conn = connUtil.getConnection();
 
@@ -24,9 +24,8 @@ public class UpdatePassenger {
         Passenger passenger = new Passenger();
 
         try {
-            System.out.println("UPDATE PASSENGER");
+            System.out.println("ADD PASSENGER");
 
-            passenger.setPassengerId(getPassengerIdInput(scanner));
             passenger.getBooking().setBookingId(getBookingIdInput(scanner));
             passenger.setGivenName(getGivenNameInput(scanner));
             passenger.setFamilyName(getFamilyNameInput(scanner));
@@ -34,27 +33,21 @@ public class UpdatePassenger {
             passenger.setGender(getGenderInput(scanner));
             passenger.setAddress(getAddressInput(scanner));
 
-            passengerDAO.updatePassenger(passenger);
+            passengerDAO.addPassenger(passenger);
             conn.commit();
 
-            System.out.println("The passenger was successfully updated.");
+            System.out.println("The passenger was successfully added.");
         } catch (Exception e) {
             if (conn != null) {
                 conn.rollback();
             }
-            System.out.println("The passenger was not updated.");
+            System.out.println("The passenger was not added.");
         } finally {
             if (conn != null) {
                 conn.close();
             }
             adminService.displayAdminMainMenu();
         }
-    }
-
-    public Integer getPassengerIdInput(Scanner scanner) {
-        System.out.println();
-        System.out.print("Enter the passenger ID for the passenger to be updated: ");
-        return Integer.parseInt(scanner.nextLine());
     }
 
     public Integer getBookingIdInput(Scanner scanner) {

@@ -5,7 +5,7 @@ import java.util.List;
 public class Booking {
 
     private Integer bookingId;
-    private Boolean isActive;
+    private Integer isActive;
     private String confirmationCode;
     private List<FlightBooking> flightBookings;
     private List<Passenger> passengers;
@@ -18,11 +18,11 @@ public class Booking {
         this.bookingId = bookingId;
     }
 
-    public Boolean getActive() {
+    public Integer getActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Integer active) {
         isActive = active;
     }
 

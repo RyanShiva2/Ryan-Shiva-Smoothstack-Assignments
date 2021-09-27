@@ -94,4 +94,16 @@ public class User {
     public void setBookingUsers(List<BookingUser> bookingUsers) {
         this.bookingUsers = bookingUsers;
     }
+
+    @Override
+    public String toString() {
+        return "User ID: " + userId + ", "
+                + "User Role ID: " + userRole.getUserRoleId() + ", "
+                + "Given Name: " + givenName + ", "
+                + "Family Name: " + familyName + ", "
+                + "Username: " + username + ", "
+                + "Email: " + email + ", "
+                + "Password: " + password + ", "
+                + "Phone: " + phone;
+    }
 }

@@ -8,16 +8,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TravelerMenu {
-    
     public void displayTravelerMenu() throws SQLException, ClassNotFoundException {
-        AddPassenger addPassenger = new AddPassenger();
-        UpdatePassenger updatePassenger = new UpdatePassenger();
-        DeletePassenger deletePassenger = new DeletePassenger();
-        ReadPassenger readPassenger = new ReadPassenger();
+        AddTraveler addTraveler = new AddTraveler();
+        UpdateTraveler updateTraveler = new UpdateTraveler();
+        DeleteTraveler deleteTraveler = new DeleteTraveler();
+        ReadTraveler readTraveler = new ReadTraveler();
         AdminService adminService = new AdminService();
 
-        final String menuTitle = "ADMIN PASSENGER MENU";
-        ArrayList<String> menuOptions = new ArrayList<>(Arrays.asList("Add a passenger.", "Update a passenger.", "Delete a passenger.", "Get all passenger information.", "Quit to Previous."));
+        final String menuTitle = "ADMIN TRAVELER MENU";
+        ArrayList<String> menuOptions = new ArrayList<>(Arrays.asList("Add a traveler.", "Update a traveler.", "Delete a traveler.", "Get all traveler information.", "Quit to Previous."));
 
         System.out.println(menuTitle);
         System.out.println("");
@@ -25,16 +24,16 @@ public class TravelerMenu {
         ServiceUtil serviceUtil = new ServiceUtil();
         switch (serviceUtil.displayMenu(menuOptions)) {
             case 1:
-                addPassenger.addPassenger();
+                addTraveler.addTraveler();
                 break;
             case 2:
-                updatePassenger.updatePassenger();
+                updateTraveler.updateTraveler();
                 break;
             case 3:
-                deletePassenger.deletePassenger();
+                deleteTraveler.deleteTraveler();
                 break;
             case 4:
-                readPassenger.readPassenger();
+                readTraveler.readTraveler();
                 break;
             case 5:
                 adminService.displayAdminMainMenu();

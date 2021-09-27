@@ -1,4 +1,4 @@
-package Service.Admin.Traveler;
+package Service.Admin.TicketAndPassenger;
 
 import DAO.PassengerDAO;
 import POJO.Passenger;
@@ -7,12 +7,11 @@ import Service.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ReadPassenger {
+public class DeletePassenger {
 
-    public void readPassenger() throws SQLException, ClassNotFoundException {
+    public void deletePassenger() throws SQLException, ClassNotFoundException {
         ConnectionUtil connUtil = new ConnectionUtil();
         Connection conn = connUtil.getConnection();
 
@@ -23,21 +22,20 @@ public class ReadPassenger {
 
         Passenger passenger = new Passenger();
 
-        ArrayList<Passenger> passengers = new ArrayList<>(passengerDAO.readPassengers());
-
         try {
-            System.out.println();
-            System.out.println("LIST OF PASSENGERS");
-            System.out.println();
+            System.out.println("DELETE PASSENGER");
 
-            printPassengers(passengers);
+            passenger.setPassengerId(getPassengerIdInput(scanner));
 
-            System.out.println("The passengers were successfully read.");
+            passengerDAO.deletePassenger(passenger);
+            conn.commit();
+
+            System.out.println("The passenger was successfully deleted.");
         } catch (Exception e) {
             if (conn != null) {
                 conn.rollback();
             }
-            System.out.println("The passengers were not read.");
+            System.out.println("The passenger was not deleted.");
         } finally {
             if (conn != null) {
                 conn.close();
@@ -46,9 +44,9 @@ public class ReadPassenger {
         }
     }
 
-    public void printPassengers(ArrayList<Passenger> passengers) {
-        for (Passenger passenger : passengers) {
-            System.out.println(passenger.toString());
-        }
+    public Integer getPassengerIdInput(Scanner scanner) {
+        System.out.println();
+        System.out.print("Enter the passenger ID for the passenger to be deleted: ");
+        return Integer.parseInt(scanner.nextLine());
     }
 }
