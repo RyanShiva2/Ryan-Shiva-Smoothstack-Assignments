@@ -28,7 +28,6 @@ public class OverrideTripCancellationMenu {
             booking.setBookingId(getBookingIdInput(scanner));
             booking.setActive(getIsActiveInput(scanner));
 
-            System.out.println("h");
             for (Booking bookingInDb : bookingDAO.readBookings()) {
                 if (bookingInDb.getBookingId().equals(booking.getBookingId())) {
                     booking.setConfirmationCode(bookingInDb.getConfirmationCode());
