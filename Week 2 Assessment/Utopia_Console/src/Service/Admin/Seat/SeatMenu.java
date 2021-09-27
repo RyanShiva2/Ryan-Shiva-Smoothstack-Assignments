@@ -1,10 +1,8 @@
 package Service.Admin.Seat;
 
 import Service.Admin.AdminService;
-import Service.Admin.Seat.AddSeat;
-import Service.Admin.Seat.DeleteSeat;
-import Service.Admin.Seat.ReadSeat;
-import Service.Admin.Seat.UpdateSeat;
+import Service.Admin.Flight.UpdateFlight;
+import Service.Admin.TicketAndPassenger.TicketAndPassengerMenu;
 import Service.ServiceUtil;
 
 import java.sql.SQLException;
@@ -14,14 +12,14 @@ import java.util.Arrays;
 public class SeatMenu {
 
     public void displaySeatMenu() throws SQLException, ClassNotFoundException {
-        AddSeat addSeat = new AddSeat();
-        UpdateSeat updateSeat = new UpdateSeat();
-        DeleteSeat deleteSeat = new DeleteSeat();
-        ReadSeat readSeat = new ReadSeat();
         AdminService adminService = new AdminService();
+        TicketAndPassengerMenu ticketAndPassengerMenu = new TicketAndPassengerMenu();
+        UpdateFlight updateFlight = new UpdateFlight();
 
         final String menuTitle = "ADMIN SEAT MENU";
-        ArrayList<String> menuOptions = new ArrayList<>(Arrays.asList("Add an available seat to a flight.", "Update the number of seats and seat price of a flight.", "Delete a seat from a flight.", "Read the seat information of all flights.", "Quit to Previous."));
+        ArrayList<String> menuOptions = new ArrayList<>(Arrays.asList("Go to the Update Flight Menu to update the number of reserved seats in a flight.",
+                "Got to the Ticket And Passenger Menu to Add, Update, Delete, or Get Information for Passengers.",
+                "Quit to Previous."));
 
         System.out.println(menuTitle);
         System.out.println("");
@@ -29,18 +27,12 @@ public class SeatMenu {
         ServiceUtil serviceUtil = new ServiceUtil();
         switch (serviceUtil.displayMenu(menuOptions)) {
             case 1:
-                addSeat.addSeat();
+                updateFlight.updateFlight();
                 break;
             case 2:
-                updateSeat.updateSeat();
+                ticketAndPassengerMenu.displayTicketAndPassengerMenu();
                 break;
             case 3:
-                deleteSeat.deleteSeat();
-                break;
-            case 4:
-                readSeat.readSeat();
-                break;
-            case 5:
                 adminService.displayAdminMainMenu();
                 break;
         }
